@@ -1,0 +1,23 @@
+@mixin icon($icon) {
+    &-#{$icon} {
+        padding-left: 24px;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            @include translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url('../img/#{$icon}-16x16.png');
+
+        }
+    }
+}
+
+$icons: 'promotion', 'tickets', 'wheel', 'financial', 'about', 'career', 'news';
+.icon {
+    @each $icon in $icons {
+        @include icon($icon);
+    }
+}

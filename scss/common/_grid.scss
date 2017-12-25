@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0px;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    background-repeat: no-repeat;
+    outline: none;
+    -webkit-appearance: none;
+    outline: none !important;
+}
+
+html {
+    &.overflow-hidden {
+        overflow: hidden;
+    }
+}
+
+.container {
+    width: $screen-lg;
+    margin: 0 auto;
+    @include md {
+        width: 100%;
+    }
+    @include sm {
+        width: 100%;
+    }
+}
+
+body {
+    overflow-x: hidden;
+    color: $primary;
+    font-family: $font-family;
+    font-weight: 300;
+}
+
+#wrap {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+    #footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.clearfix {
+    @include clearfix();
+}
+
+.ic {
+    font-size: 0;
+    > *:not(script) {
+        display: inline-block;
+        vertical-align: top;
+        font-size: $font-size;
+        &.ic {
+            font-size: 0;
+        }
+    }
+}
+
+.icm {
+    font-size: 0;
+    > * {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: $font-size;
+        &.ic {
+            font-size: 0;
+        }
+    }
+}
+
+.justify {
+    font-size: 1px !important;
+    text-align: justify;
+    &:after {
+        content: '';
+        height: 0;
+        width: 100%;
+        overflow: hidden;
+        display: inline-block;
+        visibility: hidden;
+    }
+    > * {
+        display: inline-block;
+        vertical-align: top;
+        font-size: $font-size;
+    }
+}
+
+.middle {
+    font-size: 0 !important;
+    &:before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
+    > * {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: $font-size;
+    }
+}
+
+.nowrap-blocks {
+    white-space: nowrap;
+    > * {
+        white-space: normal;
+    }
+}
+
+.hidden-block {
+    display: none;
+}
+
+.screen-lg, .screen-md, .screen-sm, .hide {
+    display: none !important;
+}
+
+@include lg {
+    .screen-lg,
+    .hide.lg {
+        display: block !important;
+        &.dib {
+            display: inline-block !important;
+        }
+    }
+}
+
+@include md {
+    .screen-md,
+    .hide.md {
+        display: block !important;
+        &.dib {
+            display: inline-block !important;
+        }
+    }
+}
+
+@include sm {
+    .screen-sm,
+    .hide.sm {
+        display: block !important;
+        &.dib {
+            display: inline-block !important;
+        }
+    }
+}
+
+.full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 55;
+}
+
+.row-flex {
+    display: flex;
+    flex-flow: row;
+}
+
+.hidden- {
+    &lg {
+        @include lg {
+            display: none !important;
+        }
+    }
+    &md {
+        @include md-strict {
+            display: none !important;
+        }
+    }
+    &sm {
+        @include sm {
+            display: none !important;
+        }
+    }
+}
+
+.visible- {
+    &lg,
+    &md,
+    &sm {
+        display: none !important;
+    }
+    &lg {
+        @include lg {
+            display: block !important;
+        }
+    }
+    &md {
+        @include md-strict {
+            display: block !important;
+        }
+    }
+    &sm {
+        @include sm {
+            display: block !important;
+        }
+    }
+}

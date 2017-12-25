@@ -1,0 +1,51 @@
+<section id="tickets">
+    <div class="page-title icon icon-promotion">
+        Tickets and Admission
+    </div>
+    <div class="form">
+        <form method="post" action="form-handler.php">
+            <div class="row-title">Amount of Guests</div>
+            <div class="row-flex tickets-amount">
+                <div class="form-group">
+                    <label for="amount_adult">Adult:</label>
+                    <select name="amount_adult" id="amount_adult" data-for="adult">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount_children">Children:</label>
+                    <select name="amount_children" id="amount_children" data-for="children">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount_senior">Senior:</label>
+                    <select name="amount_senior" id="amount_senior" data-for="senior">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="tickets tickets-adult"></div>
+            <div class="tickets tickets-children"></div>
+            <div class="tickets tickets-senior"></div>
+            <div class="form-group">
+                <button type="submit">Checkout and Confirm the tickets</button>
+            </div>
+        </form>
+    </div>
+</section>

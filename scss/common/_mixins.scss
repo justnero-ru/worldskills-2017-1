@@ -1,0 +1,248 @@
+@mixin retina($image) {
+    @media (min--moz-device-pixel-ratio: 1.3),
+    (-o-min-device-pixel-ratio: 2.62),
+    (-webkit-min-device-pixel-ratio: 1.3),
+    (min-device-pixel-ratio: 1.3),
+    (min-resolution: 1.3dppx) {
+        background-image: url($image);
+    }
+}
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model;
+    -moz-box-sizing: $box-model;
+    box-sizing: $box-model;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: 'padding-box';
+}
+
+@mixin border-top-radius($radius) {
+    -webkit-border-top-right-radius: $radius;
+    border-top-right-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-left-radius: $radius;
+    background-clip: 'padding-box';
+}
+
+@mixin border-right-radius($radius) {
+    -webkit-border-bottom-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+    -webkit-border-top-right-radius: $radius;
+    border-top-right-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-bottom-radius($radius) {
+    -webkit-border-bottom-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-left-radius($radius) {
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-left-radius: $radius;
+    background-clip: "padding-box";
+}
+
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin rotate($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+@mixin scale($scale) {
+    @include transform(scale($scale));
+}
+
+@mixin translate($x, $y) {
+    @include transform(translate($x, $y));
+}
+
+@mixin translate3d($x, $y, $z) {
+    @include transform(translate3d($x, $y, $z));
+}
+
+@mixin translateX($x) {
+    @include transform(translateX($x));
+}
+
+@mixin translateY($y) {
+    @include transform(translateY($y));
+}
+
+@mixin skew($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+@mixin lg {
+    @media screen and (min-width: #{$screen-lg + 1px}) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media screen and (max-width: #{$screen-lg}) {
+        @content;
+    }
+}
+
+@mixin md-strict {
+    @media screen and (min-width: #{$screen-sm}) and (max-width: #{$screen-lg}) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media screen and (max-width: #{$screen-sm - 1px}) {
+        @content;
+    }
+}
+
+@mixin max-width($width) {
+    @media screen and (max-width: #{$width}) {
+        @content;
+    }
+}
+
+@mixin min-width($width) {
+    @media screen and (min-width: #{$width}) {
+        @content;
+    }
+}
+
+$VENDORS: webkit, moz, ms, o;
+
+@mixin vendor-prefix($property, $values...) {
+    @each $vendor in $VENDORS {
+        -#{$vendor}-#{$property}: $values;
+    }
+    #{$property}: $values;
+}
+
+@mixin vendor-function($property, $func, $args...) {
+    @each $vendor in $VENDORS {
+        #{$property}: -#{$vendor}-#{$func}($args);
+    }
+    #{$property}: #{$func}($args);
+}
+
+@mixin transition($args...) {
+    @include vendor-prefix(transition, $args);
+}
+
+@mixin placeholder {
+    &-webkit-input-placeholder {
+        @content
+    }
+    &-moz-placeholder {
+        @content
+    }
+    &-moz-placeholder {
+        @content
+    }
+    &-ms-input-placeholder {
+        @content
+    }
+}
+
+@mixin animation($animation) {
+    -webkit-animation: $animation;
+    -moz-animation: $animation;
+    -o-animation: $animation;
+    -ms-animation: $animation;
+    animation: $animation;
+}
+
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+
+@mixin justify-content($val) {
+    -webkit-justify-content: $val;
+    justify-content: $val;
+}
+
+@mixin align-items($val) {
+    -webkit-align-items: $val;
+    align-items: $val;
+}
+
+@mixin aspectRatio($width, $height) {
+    &:before {
+        display: block;
+        content: " ";
+        width: 100%;
+        padding-top: percentage($height / $width);
+    }
+}
+
+@mixin keyframe($animation_name) {
+    @-webkit-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @-o-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+
+@mixin filter($filter) {
+    -webkit-filter: $filter;
+    -moz-filter: $filter;
+    -ms-filter: $filter;
+    -o-filter: $filter;
+    filter: $filter;
+}

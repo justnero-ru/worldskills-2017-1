@@ -1,0 +1,99 @@
+#financial {
+    .financial-data {
+        flex-wrap: wrap;
+
+        @include sm {
+            justify-content: center;
+        }
+
+        .financial-text {
+            text-align: right;
+            border-right: 1px solid;
+
+            @include sm {
+                padding-top: 10px !important;
+                border: none;
+            }
+        }
+
+        .financial-price {
+            font-size: 32px;
+            font-weight: bold;
+
+            @include sm {
+                order: -1;
+                padding-bottom: 15px !important;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+        .financial-text,
+        .financial-price {
+            padding: 0 5px;
+            flex-basis: 50%;
+
+            @include sm {
+                flex-basis: 70%;
+                text-align: center;
+            }
+        }
+    }
+
+    .financial-download {
+        padding: 40px 0;
+        text-align: center;
+
+        .download-link {
+            $dl-color: #3a7694;
+            $dl-color-0: rgba($dl-color, 0);
+            $dl-color-1: rgba($dl-color, 1);
+            position: relative;
+            display: inline-block;
+            padding: 20px 20px 20px 30px;
+            border: 1px solid skyblue;
+            color: skyblue;
+            border-radius: 3px;
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 17px;
+                top: 29px;
+                width: 1px;
+                height: 1px;
+
+                transition: box-shadow ease-in-out .2s;
+
+                box-shadow: -5px -10px 0 0 $dl-color-0,
+                0 -5px 0 0 $dl-color-0,
+                -5px -1px 0 0 $dl-color-0,
+                0 1px 0 0 $dl-color-0,
+                5px -1px 0 0 $dl-color-0,
+                0 8px 0 0 $dl-color-0,
+                -5px 5px 0 0 $dl-color-0,
+                -2px 0px 0 0 $dl-color-0,
+                6px 4px 0 0 $dl-color-0,
+                -3px 5px 0 0 $dl-color-0;
+            }
+
+            &:hover {
+                color: $dl-color;
+                border-color: $dl-color;
+
+                &:before {
+                    box-shadow: 0 -5px 0 0 $dl-color-1,
+                    0 -3px 0 0 $dl-color-1,
+                    0 -1px 0 0 $dl-color-1,
+                    0 1px 0 0 $dl-color-1,
+                    0 3px 0 0 $dl-color-1,
+                    0 5px 0 0 $dl-color-1,
+                    -5px 1px 0 0 $dl-color-1,
+                    -2px 3px 0 0 $dl-color-1,
+                    5px 1px 0 0 $dl-color-1,
+                    2px 3px 0 0 $dl-color-1;
+                }
+            }
+        }
+    }
+
+}
